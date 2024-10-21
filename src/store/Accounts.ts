@@ -89,8 +89,12 @@ export class Accounts implements Module {
             second += Number(UserSettings.items.offset);
           }
 
-          // prevent second from negative
-          second = (second < 0) ? (60 - (second * -1) % 60) : (second % 60);
+          if (second < 0) {
+            // Handle the situation where offset causes `second` to be negative. #1310 
+            second = 60 - ((second * -1) % 60)
+          } else {
+            second = second % 60
+          }
           state.second = second;
 
           let currentlyEncrypted = false;
