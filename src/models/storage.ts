@@ -628,7 +628,7 @@ export class EntryStorage {
         case OTPType[OTPType.steam]:
         case OTPType[OTPType.hex]:
         case OTPType[OTPType.hhex]:
-          type = OTPType[entryData.type];
+          type = OTPType.hhex;
           break;
         default:
           // we need correct the type here

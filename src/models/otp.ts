@@ -224,8 +224,7 @@ export class OTPEntry implements OTPEntryInterface {
     this.period = decryptedData.period || 30;
     this.pinned = decryptedData.pinned || false;
     this.secret = decryptedData.secret;
-    // @ts-expect-error need a better way to do this
-    this.type = OTPType[decryptedData.type] || OTPType.totp;
+    this.type = OTPType[decryptedData.type as keyof typeof OTPType] || OTPType.totp;
 
     if (this.type !== OTPType.hotp && this.type !== OTPType.hhex) {
       this.generate();
