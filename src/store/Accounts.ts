@@ -90,10 +90,10 @@ export class Accounts implements Module {
           }
 
           if (second < 0) {
-            // Handle the situation where offset causes `second` to be negative. #1310 
-            second = 60 - ((second * -1) % 60)
+            // Handle the situation where offset causes `second` to be negative. #1310
+            second = 60 - ((second * -1) % 60);
           } else {
-            second = second % 60
+            second = second % 60;
           }
           state.second = second;
 
