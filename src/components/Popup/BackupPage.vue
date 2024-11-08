@@ -213,9 +213,15 @@ function getOneLineOtpBackupFile(entryData: { [hash: string]: RawOTPStorage }) {
       ? otpStorage.issuer + ":" + (otpStorage.account || "")
       : otpStorage.account || "";
     let type = "";
-    if (otpStorage.type === OTPType[OTPType.totp] || otpStorage.type === OTPType[OTPType.hex]) {
+    if (
+      otpStorage.type === OTPType[OTPType.totp] ||
+      otpStorage.type === OTPType[OTPType.hex]
+    ) {
       type = OTPType[OTPType.totp];
-    } else if (otpStorage.type === OTPType[OTPType.hotp] || otpStorage.type === OTPType[OTPType.hhex]) {
+    } else if (
+      otpStorage.type === OTPType[OTPType.hotp] ||
+      otpStorage.type === OTPType[OTPType.hhex]
+    ) {
       type = OTPType[OTPType.hotp];
     } else {
       continue;

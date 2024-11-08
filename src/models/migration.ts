@@ -112,9 +112,11 @@ export function getOTPAuthPerLineFromOPTAuthMigration(migrationUri: string) {
       byteData[isserStart + isserLength + 1]
     ];
     const digits = [6, 6, 8][byteData[isserStart + isserLength + 3]];
-    const type = [OTPType[OTPType.totp], OTPType[OTPType.hotp], OTPType[OTPType.totp]][
-      byteData[isserStart + isserLength + 5]
-    ];
+    const type = [
+      OTPType[OTPType.totp],
+      OTPType[OTPType.hotp],
+      OTPType[OTPType.totp],
+    ][byteData[isserStart + isserLength + 5]];
     let line = `otpauth://${type}/${account}?secret=${secret}&issuer=${issuer}&algorithm=${algorithm}&digits=${digits}`;
     if (type === OTPType[OTPType.hotp]) {
       let counter = 1;

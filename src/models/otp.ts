@@ -224,7 +224,8 @@ export class OTPEntry implements OTPEntryInterface {
     this.period = decryptedData.period || 30;
     this.pinned = decryptedData.pinned || false;
     this.secret = decryptedData.secret;
-    this.type = OTPType[decryptedData.type as keyof typeof OTPType] || OTPType.totp;
+    this.type =
+      OTPType[decryptedData.type as keyof typeof OTPType] || OTPType.totp;
 
     if (this.type !== OTPType.hotp && this.type !== OTPType.hhex) {
       this.generate();
